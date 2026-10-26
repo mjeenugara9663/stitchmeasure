@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>StitchMeasure AI</title>
+<meta name="description" content="Offline body measurement studio for tailors and fashion designers.">
+<meta name="theme-color" content="#0E1B2C">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="StitchMeasure">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="public/icons/favicon-64.png">
+<link rel="apple-touch-icon" href="public/icons/apple-touch-icon.png">
+<link rel="stylesheet" href="src/styles/app.css">
+</head>
+<body>
+<div class="app" id="app">
+  <nav class="sidebar" aria-label="Main">
+    <div class="brand"><img class="brand-mark" src="public/icons/icon-192.png" alt=""><div><b>StitchMeasure</b><small>AI · Offline studio</small></div></div>
+    <a href="#/" data-nav="dashboard"><span data-ic="home"></span>Dashboard</a>
+    <a href="#/new-customer" data-nav="new-customer"><span data-ic="userPlus"></span>New Customer</a>
+    <a href="#/scan" data-nav="scan"><span data-ic="scan"></span>Body Scanner</a>
+    <a href="#/library" data-nav="library"><span data-ic="book"></span>Measurement Library</a>
+    <a href="#/templates" data-nav="templates"><span data-ic="hanger"></span>Garment Templates</a>
+    <a href="#/customers" data-nav="customers"><span data-ic="folder"></span>Saved Profiles</a>
+    <a href="#/reports" data-nav="reports"><span data-ic="report"></span>Reports</a>
+    <a href="#/settings" data-nav="settings"><span data-ic="settings"></span>Settings</a>
+    <div class="side-foot" id="sideStatus"></div>
+  </nav>
+  <div class="main-col">
+    <header class="topbar">
+      <img class="brand-mark" src="public/icons/icon-192.png" alt="">
+      <div class="title" id="topTitle">StitchMeasure AI</div>
+      <span class="status-pill" id="topStatus"><span class="dot"></span><span>Checking</span></span>
+    </header>
+    <main class="content" id="view" tabindex="-1"></main>
+  </div>
+  <nav class="bottomnav" aria-label="Main">
+    <a href="#/" data-nav="dashboard"><span data-ic="home"></span>Home</a>
+    <a href="#/customers" data-nav="customers"><span data-ic="users"></span>Profiles</a>
+    <a href="#/scan" data-nav="scan" class="scan"><span data-ic="scan"></span>Scan</a>
+    <a href="#/library" data-nav="library"><span data-ic="book"></span>Library</a>
+    <a href="#/more" data-nav="more"><span data-ic="more"></span>More</a>
+  </nav>
+</div>
+<noscript><p style="padding:20px">StitchMeasure AI needs JavaScript to run.</p></noscript>
+
+<!-- vendor (local copy, no CDN) -->
+<script src="public/vendor/jspdf.umd.min.js"></script>
+<!-- core -->
+<script src="src/core/i18n.js"></script>
+<script src="src/core/util.js"></script>
+<script src="src/components/icons.js"></script>
+<!-- services -->
+<script src="src/storage/db.js"></script>
+<script src="src/storage/backup.js"></script>
+<script src="src/settings/settings.js"></script>
+<script src="src/measurement-engine/catalog.js"></script>
+<script src="src/measurement-engine/engine.js"></script>
+<script src="src/calibration/calibration.js"></script>
+<script src="src/garment-templates/templates.js"></script>
+<script src="src/reference-images/figure.js"></script>
+<script src="src/overlays/overlays.js"></script>
+<script src="src/camera/camera.js"></script>
+<script src="src/pose-detection/pose.js"></script>
+<script src="src/photo-export/export.js"></script>
+<script src="src/reports/reports.js"></script>
+<script src="src/customer-profiles/customers.js"></script>
+<script src="src/customer-profiles/samples.js"></script>
+<!-- screens -->
+<script src="src/app.js"></script>
+<script src="src/components/dashboard.js"></script>
+<script src="src/customer-profiles/views.js"></script>
+<script src="src/measurement-engine/session-view.js"></script>
+<script src="src/body-map/bodymap.js"></script>
+<script src="src/garment-templates/views.js"></script>
+<script src="src/camera/camera-view.js"></script>
+<script src="src/photo-export/editor.js"></script>
+<script src="src/photo-export/photos-view.js"></script>
+<script src="src/reports/views.js"></script>
+<script src="src/settings/views.js"></script>
+<script src="src/components/wizard.js"></script>
+<script src="src/components/boot.js"></script>
+</body>
+</html>

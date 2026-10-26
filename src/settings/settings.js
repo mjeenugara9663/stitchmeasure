@@ -23,7 +23,7 @@
       else document.documentElement.removeAttribute("data-theme");
       const meta = document.querySelector('meta[name="theme-color"]');
       const dark = t === "dark" || (t === "system" && root.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
-      if (meta) meta.setAttribute("content", dark ? "#080C20" : "#0B1028");
+      if (meta) meta.setAttribute("content", dark ? "#160F38" : "#3B22B8");
     },
     /* simple app lock: SHA-256 of salt+PIN. Deters casual access only. */
     async hashPin(pin) {

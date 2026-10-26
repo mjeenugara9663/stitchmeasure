@@ -29,14 +29,14 @@
     el.innerHTML = `
       ${fileWarn ? `<div class="notice warn" style="margin-bottom:14px">${SM.icon("warn")}<div><b>${t("Opened directly as a file.")}</b> ${t("Camera access, offline installation and the service worker need the app to be served over https:// or localhost. Manual measurement entry, photo import, reports and backups still work. See docs/installation.md.")}</div></div>` : ""}
       ${SM.db.inMemory ? `<div class="notice danger" style="margin-bottom:14px">${SM.icon("warn")}<div>${t("This browser is blocking storage (private mode?). Nothing will be kept after you close the app.")}</div></div>` : ""}
-      <section class="hero">
+      <section class="hero">${SM.landingScene ? SM.landingScene() : ""}
         <div>
           <div class="eyebrow">VRISAMA / STITCHMEASURE</div>
           <h1>${t("Measure with care, cut with confidence.")}</h1>
           <p>${t("Guided photos, tape-verified values and clean measurement sheets. Everything stays on this device.")}</p>
           <div class="btn-row"><a class="btn primary" href="#/scan">${SM.icon("scan")}${t("Start new measurement")}</a><a class="btn gold" href="#/camera">${SM.icon("camera")}${t("Open camera")}</a></div>
         </div>
-        <div class="hero-fig">${SM.figure.svg({ view: "front", markers: false })}</div>
+        
       </section>
 
       <div class="stack" style="margin-top:16px">

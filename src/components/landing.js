@@ -111,6 +111,7 @@ ${[0, 1, 2].map((i) => `<g transform="translate(${1362 + i * 40} ${500 - i * 12}
 </svg>`;
   }
 
+  SM.landingScene = scene;
   SM.views.welcome = async function (el) {
     const V = '<span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M15 17 31 49 49 17" fill="none" stroke="#fff" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/></svg></span>';
     el.innerHTML = `

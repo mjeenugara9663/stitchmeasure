@@ -107,7 +107,7 @@
 
   SM.views.more = async function (el) {
     el.innerHTML = app.head({ title: t("More") }) + `<div class="list">
-      ${[["#/new-customer", "userPlus", "New customer", "Create a customer profile"], ["#/templates", "hanger", "Garment templates", "Checklists for every garment"], ["#/reports", "report", "Reports", "Measurement sheets and exports"], ["#/photos", "image", "Photo library", "Saved photos by customer and view"], ["#/poses", "body", "Pose references", "How to stand for each photo"], ["#/settings", "settings", "Settings", "Units, privacy, backup, calibration"]]
+      ${[["#/new-customer", "userPlus", "New customer", "Create a customer profile"], ["#/templates", "hanger", "Garment templates", "Checklists for every garment"], ["#/reports", "report", "Reports", "Measurement sheets and exports"], ["#/photos", "image", "Photo library", "Saved photos by customer and view"], ["#/poses", "body", "Pose references", "How to stand for each photo"], ["#/settings", "settings", "Settings", "Units, privacy, backup, calibration"], ["index.html", "home", "StitchMeasure home page", "The public welcome page"]]
       .map(([h, i, n, s]) => `<a class="list-item" href="${h}"><span class="avatar">${SM.icon(i)}</span><span class="main"><span class="t">${t(n)}</span><span class="s">${t(s)}</span></span>${SM.icon("chevron")}</a>`).join("")}
     </div>`;
   };

@@ -1,7 +1,7 @@
 /* StitchMeasure by Vrisama service worker: precaches every app file so the app opens
  * and works with no network. No data ever leaves the device; this worker only
  * serves the app's own files. Bump VERSION (tools/build.js does it) on release. */
-const VERSION = "sm-1.0.0-202610260747";
+const VERSION = "sm-1.0.0-202610260934";
 const ASSETS = [
   "./",
   "index.html",
@@ -37,6 +37,7 @@ const ASSETS = [
   "src/reports/views.js",
   "src/settings/views.js",
   "src/components/wizard.js",
+  "src/components/landing.js",
   "src/components/boot.js",
   "public/vendor/jspdf.umd.min.js",
   "public/fonts/outfit-latin-600-normal.woff2",

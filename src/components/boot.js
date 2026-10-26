@@ -32,6 +32,7 @@
     });
   }
 
+  SM.privacyFirstRun = privacyFirstRun;
   async function boot() {
     await SM.db.open();
     await SM.settings.load();
@@ -39,7 +40,6 @@
     if (app.settings.pinEnabled) await lockScreen();
     window.addEventListener("hashchange", () => app.render());
     await app.render();
-    if (!app.settings.privacyAccepted) privacyFirstRun();
 
     if (!window.SM_SINGLE_FILE && "serviceWorker" in navigator && location.protocol !== "file:") {
       try {

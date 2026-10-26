@@ -6,7 +6,7 @@
   SM.views = SM.views || {};
 
   const TITLES = {
-    dashboard: "Dashboard", "new-customer": "New customer", customers: "Saved profiles", customer: "Customer", "edit-customer": "Edit customer",
+    welcome: "StitchMeasure", dashboard: "Dashboard", "new-customer": "New customer", customers: "Saved profiles", customer: "Customer", "edit-customer": "Edit customer",
     session: "Measurements", scan: "Body scanner", library: "Measurement library", measure: "Measurement", templates: "Garment templates",
     template: "Template", reports: "Reports", report: "Report", settings: "Settings", more: "More", photos: "Photo library", compare: "Compare", poses: "Pose references"
   };
@@ -49,7 +49,8 @@
       const raw = (location.hash || "#/").replace(/^#\/?/, "").split("#")[0];
       const parts = raw.split("/").filter(Boolean).map(decodeURIComponent);
       const name = parts[0] || "dashboard";
-      const view = SM.views[name] ? name : "dashboard";
+      const view = !location.hash && SM.views.welcome ? "welcome" : (SM.views[name] ? name : "dashboard");
+      document.body.classList.toggle("landing", view === "welcome");
       app.route = { name: view, args: parts.slice(1) };
       U.$$("[data-nav]").forEach((a) => {
         const n = a.getAttribute("data-nav");
@@ -64,6 +65,7 @@
       el.innerHTML = "";
       try { await SM.views[view](el, app.route.args); }
       catch (e) { console.error(e); el.innerHTML = `<div class="notice danger">${SM.icon("warn")}<div><b>${t("Something went wrong on this screen.")}</b><br>${U.esc(e.message)}</div></div>`; }
+      if (view !== "welcome" && !app.settings.privacyAccepted && !app._privShown && SM.privacyFirstRun) { app._privShown = true; SM.privacyFirstRun(); }
       if (!app._noScroll) root.scrollTo(0, 0);
       app._noScroll = false;
     },

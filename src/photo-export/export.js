@@ -42,7 +42,7 @@
     const label = (text, x, y, color) => {
       g.font = `600 ${fontPx}px "DM Sans", system-ui, sans-serif`;
       const tw = g.measureText(text).width, pad = 4 * k;
-      g.fillStyle = "rgba(14,27,44,.82)"; g.fillRect(x - pad, y - fontPx - pad * 0.5, tw + pad * 2, fontPx + pad * 1.6);
+      g.fillStyle = "rgba(11,16,40,.82)"; g.fillRect(x - pad, y - fontPx - pad * 0.5, tw + pad * 2, fontPx + pad * 1.6);
       g.fillStyle = color || "#ffffff"; g.fillText(text, x, y);
     };
     const seg = (a, b, color, dash) => {
@@ -50,20 +50,20 @@
       g.strokeStyle = "rgba(0,0,0,.55)"; g.lineWidth = 5 * k; g.setLineDash(dash ? [10 * k, 7 * k] : []);
       g.beginPath(); g.moveTo(a.x, a.y); g.lineTo(b.x, b.y); g.stroke();
       g.strokeStyle = color; g.lineWidth = 2.4 * k; g.beginPath(); g.moveTo(a.x, a.y); g.lineTo(b.x, b.y); g.stroke(); g.restore();
-      [a, b].forEach((p) => { g.beginPath(); g.arc(p.x, p.y, 5 * k, 0, 7); g.fillStyle = color; g.fill(); g.lineWidth = 1.5 * k; g.strokeStyle = "#0E1B2C"; g.stroke(); });
+      [a, b].forEach((p) => { g.beginPath(); g.arc(p.x, p.y, 5 * k, 0, 7); g.fillStyle = color; g.fill(); g.lineWidth = 1.5 * k; g.strokeStyle = "#0B1028"; g.stroke(); });
     };
     const cal = ann.cal;
     if (cal) {
       [cal.edge1, cal.edge2].forEach((e, i) => {
         if (!e || !e[0] || !e[1]) return;
         const a = V(e[0]), b = V(e[1]);
-        seg(a, b, "#D8B76A", true);
-        if (!opts.noLabels) label(i === 0 ? SM.t("Reference") : SM.t("Reference edge 2"), (a.x + b.x) / 2 + 8 * k, (a.y + b.y) / 2 - 8 * k, "#D8B76A");
+        seg(a, b, "#FFBC86", true);
+        if (!opts.noLabels) label(i === 0 ? SM.t("Reference") : SM.t("Reference edge 2"), (a.x + b.x) / 2 + 8 * k, (a.y + b.y) / 2 - 8 * k, "#FFBC86");
       });
     }
     (ann.lines || []).forEach((ln) => {
       const a = V(ln.a), b = V(ln.b);
-      seg(a, b, "#3CC4B8", false);
+      seg(a, b, "#58F0C5", false);
       if (opts.noLabels) return;
       const r = SM.calibration.measure(cal && cal.result, ln.a, ln.b);
       const val = r.mm != null ? SM.engine.format(r.mm / 10, unit || "cm") + " " + SM.engine.unitLabel(unit || "cm") : Math.round(r.px) + " px";
@@ -73,9 +73,9 @@
     (ann.points || []).forEach((pt) => {
       const p = V(pt);
       g.beginPath(); g.arc(p.x, p.y, 7 * k, 0, 7); g.lineWidth = 3 * k; g.strokeStyle = "rgba(0,0,0,.6)"; g.stroke();
-      g.lineWidth = 2 * k; g.strokeStyle = "#D8B76A"; g.stroke();
+      g.lineWidth = 2 * k; g.strokeStyle = "#FFBC86"; g.stroke();
       g.beginPath(); g.arc(p.x, p.y, 1.8 * k, 0, 7); g.fillStyle = "#fff"; g.fill();
-      if (pt.label && !opts.noLabels) label(pt.label, p.x + 10 * k, p.y - 8 * k, "#D8B76A");
+      if (pt.label && !opts.noLabels) label(pt.label, p.x + 10 * k, p.y - 8 * k, "#FFBC86");
     });
   }
 

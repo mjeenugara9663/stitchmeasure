@@ -31,7 +31,7 @@
       ${SM.db.inMemory ? `<div class="notice danger" style="margin-bottom:14px">${SM.icon("warn")}<div>${t("This browser is blocking storage (private mode?). Nothing will be kept after you close the app.")}</div></div>` : ""}
       <section class="hero">
         <div>
-          <div class="eyebrow">${t("Offline measurement studio")}</div>
+          <div class="eyebrow">VRISAMA / STITCHMEASURE</div>
           <h1>${t("Measure with care, cut with confidence.")}</h1>
           <p>${t("Guided photos, tape-verified values and clean measurement sheets. Everything stays on this device.")}</p>
           <div class="btn-row"><a class="btn primary" href="#/scan">${SM.icon("scan")}${t("Start new measurement")}</a><a class="btn gold" href="#/camera">${SM.icon("camera")}${t("Open camera")}</a></div>

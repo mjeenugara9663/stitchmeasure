@@ -20,13 +20,13 @@
   const STYLE = `<style>
     .fig-outline{fill:rgba(255,255,255,.06);stroke:#ffffff;stroke-width:1.6;stroke-linejoin:round}
     .fig-arm{fill:rgba(255,255,255,.04)}
-    .ov-center{stroke:#3CC4B8;stroke-width:1;stroke-dasharray:4 4}
-    .ov-limit{stroke:#D8B76A;stroke-width:1.4;stroke-dasharray:6 3}
-    .ov-marker{stroke:#3CC4B8;stroke-width:1.2}
+    .ov-center{stroke:#58F0C5;stroke-width:1;stroke-dasharray:4 4}
+    .ov-limit{stroke:#FFBC86;stroke-width:1.4;stroke-dasharray:6 3}
+    .ov-marker{stroke:#58F0C5;stroke-width:1.2}
     .ov-label{fill:#ffffff;font:600 7.5px system-ui,sans-serif;paint-order:stroke;stroke:rgba(0,0,0,.6);stroke-width:2px}
-    .ov-foot{fill:rgba(216,183,106,.18);stroke:#D8B76A;stroke-width:1.2}
-    .hl-line{stroke:#D8B76A;stroke-width:2;fill:none;stroke-dasharray:5 3}
-    .hl-dot{fill:#D8B76A}.hl-ghost{display:none}
+    .ov-foot{fill:rgba(255,188,134,.18);stroke:#FFBC86;stroke-width:1.2}
+    .hl-line{stroke:#FFBC86;stroke-width:2;fill:none;stroke-dasharray:5 3}
+    .hl-dot{fill:#FFBC86}.hl-ghost{display:none}
   </style>`;
 
   function outlineSVG(viewKey, age) {
@@ -57,9 +57,9 @@
     for (let x = cell; x < w - 0.5; x += cell) { g.moveTo(Math.round(x) + 0.5, 0); g.lineTo(Math.round(x) + 0.5, h); }
     for (let y = cell; y < h - 0.5; y += cell) { g.moveTo(0, Math.round(y) + 0.5); g.lineTo(w, Math.round(y) + 0.5); }
     g.stroke();
-    g.strokeStyle = `rgba(60,196,184,${0.9 * a})`; g.lineWidth = Math.max(1.5, w / 500);
+    g.strokeStyle = `rgba(88,240,197,${0.9 * a})`; g.lineWidth = Math.max(1.5, w / 500);
     g.beginPath(); g.moveTo(w / 2, 0); g.lineTo(w / 2, h); g.moveTo(0, h / 2); g.lineTo(w, h / 2); g.stroke();
-    g.setLineDash([8, 6]); g.strokeStyle = `rgba(216,183,106,${0.8 * a})`;
+    g.setLineDash([8, 6]); g.strokeStyle = `rgba(255,188,134,${0.8 * a})`;
     g.beginPath(); [1 / 3, 2 / 3].forEach((f) => { g.moveTo(0, h * f); g.lineTo(w, h * f); g.moveTo(w * f, 0); g.lineTo(w * f, h); }); g.stroke();
     g.restore();
   }

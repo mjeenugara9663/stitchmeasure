@@ -82,7 +82,7 @@
             <dt>${t("Offline")}</dt><dd>${status.ready ? t("App files cached; works without internet.") : status.sw === "file" ? t("Opened as a file: not installable. Serve over https or localhost.") : t("Not cached yet. Open the app once while online over https.")}</dd>
             <dt>${t("Install")}</dt><dd><span id="installHint">${t("Android Chrome: menu ⋮ › Install app. iPhone Safari: Share › Add to Home Screen.")}</span> <button class="btn sm" data-install hidden>${t("Install now")}</button></dd>
             <dt>${t("AI body detection")}</dt><dd>${U.esc(t(pose.reason))}</dd>
-            <dt>${t("Version")}</dt><dd>${SM.backup.VERSION} · ${t("Phase 1")}</dd>
+            <dt>${t("Version")}</dt><dd>${SM.backup.VERSION} · ${t("Phase 1")}</dd><dt>${t("Made by")}</dt><dd>Vrisama · Bengaluru, India · <a href="https://stitchmeasure.vrisama.in" target="_blank" rel="noopener">stitchmeasure.vrisama.in</a></dd>
           </dl>
           <div class="notice">${SM.icon("info")}<div>${t("Measurements from photos are approximate. Circumferences and depths always need a measuring tape. No accuracy figures are claimed until the validation study in docs/measurement-validation.md has been carried out.")}</div></div>
         </section>

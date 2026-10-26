@@ -31,7 +31,7 @@
           <button class="icon-btn" data-redo aria-label="${t("Redo")}" disabled>${SM.icon("redo")}</button>
           <button class="icon-btn" data-zoomout aria-label="${t("Zoom out")}"><b style="font-size:22px;line-height:1">−</b></button>
           <button class="icon-btn" data-zoomin aria-label="${t("Zoom in")}"><b style="font-size:22px;line-height:1">+</b></button>
-          <button class="btn sm primary" data-save style="background:#3CC4B8;border-color:#3CC4B8;color:#06201E">${opts.temporary ? t("Done") : t("Save")}</button>
+          <button class="btn sm primary" data-save style="background:#58F0C5;border-color:#58F0C5;color:#073A37">${opts.temporary ? t("Done") : t("Save")}</button>
         </div>
         <div class="ed-stage" data-stage><canvas data-cv></canvas></div>
         <div class="ed-tools" role="toolbar">
@@ -72,7 +72,7 @@
         if (ann.crop) {
           const c = ann.crop; g.fillStyle = "rgba(0,0,0,.55)";
           g.fillRect(0, 0, d.w, c.y); g.fillRect(0, c.y + c.h, d.w, d.h - c.y - c.h); g.fillRect(0, c.y, c.x, c.h); g.fillRect(c.x + c.w, c.y, d.w - c.x - c.w, c.h);
-          g.strokeStyle = "#D8B76A"; g.lineWidth = 2 / st.s; g.setLineDash([8 / st.s, 6 / st.s]); g.strokeRect(c.x, c.y, c.w, c.h); g.setLineDash([]);
+          g.strokeStyle = "#FFBC86"; g.lineWidth = 2 / st.s; g.setLineDash([8 / st.s, 6 / st.s]); g.strokeRect(c.x, c.y, c.w, c.h); g.setLineDash([]);
         }
         PX.drawAnnotations(g, ann, IW, IH, rot(), 1 / st.s, unit);
         // pending first point and selected handle
@@ -91,7 +91,7 @@
         const src = (R * 2 / Z) * dpr;
         g.drawImage(cv, sp.x * dpr - src / 2, sp.y * dpr - src / 2, src, src, lx, ly, R * 2, R * 2);
         g.restore();
-        g.strokeStyle = "#D8B76A"; g.lineWidth = 3; g.beginPath(); g.arc(lx + R, ly + R, R, 0, 7); g.stroke();
+        g.strokeStyle = "#FFBC86"; g.lineWidth = 3; g.beginPath(); g.arc(lx + R, ly + R, R, 0, 7); g.stroke();
         g.strokeStyle = "#fff"; g.lineWidth = 1; g.beginPath(); g.moveTo(lx + R - 10, ly + R); g.lineTo(lx + R + 10, ly + R); g.moveTo(lx + R, ly + R - 10); g.lineTo(lx + R, ly + R + 10); g.stroke();
         g.restore();
       }
@@ -155,7 +155,7 @@
       function drawTemp(a, b) {
         draw(b);
         const dpr = window.devicePixelRatio || 1, A = viewToScreen(toV(a)), B = viewToScreen(toV(b));
-        g.save(); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.strokeStyle = st.tool === "cal" ? "#D8B76A" : "#3CC4B8"; g.lineWidth = 2.5; g.setLineDash([6, 4]);
+        g.save(); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.strokeStyle = st.tool === "cal" ? "#FFBC86" : "#58F0C5"; g.lineWidth = 2.5; g.setLineDash([6, 4]);
         g.beginPath(); g.moveTo(A.x, A.y); g.lineTo(B.x, B.y); g.stroke(); g.restore();
       }
       const finishSeg = (a, b) => {

@@ -1,7 +1,7 @@
-/* StitchMeasure AI service worker: precaches every app file so the app opens
+/* StitchMeasure by Vrisama service worker: precaches every app file so the app opens
  * and works with no network. No data ever leaves the device; this worker only
  * serves the app's own files. Bump VERSION (tools/build.js does it) on release. */
-const VERSION = "sm-1.0.0-202610260727";
+const VERSION = "sm-1.0.0-202610260747";
 const ASSETS = [
   "./",
   "index.html",
@@ -39,8 +39,9 @@ const ASSETS = [
   "src/components/wizard.js",
   "src/components/boot.js",
   "public/vendor/jspdf.umd.min.js",
-  "public/fonts/cormorant-garamond-latin-500-normal.woff2",
-  "public/fonts/cormorant-garamond-latin-600-normal.woff2",
+  "public/fonts/outfit-latin-600-normal.woff2",
+  "public/fonts/outfit-latin-700-normal.woff2",
+  "public/fonts/outfit-latin-800-normal.woff2",
   "public/fonts/dm-sans-latin-400-normal.woff2",
   "public/fonts/dm-sans-latin-500-normal.woff2",
   "public/fonts/dm-sans-latin-600-normal.woff2",
@@ -49,7 +50,8 @@ const ASSETS = [
   "public/icons/icon-512.png",
   "public/icons/icon-maskable-512.png",
   "public/icons/apple-touch-icon.png",
-  "public/icons/favicon-64.png"
+  "public/icons/favicon-64.png",
+  "public/icons/favicon.svg"
 ];
 
 self.addEventListener("install", (e) => {

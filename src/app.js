@@ -59,7 +59,7 @@
         a.classList.toggle("on", on);
         if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
       });
-      U.$("#topTitle").textContent = t(TITLES[view] || "StitchMeasure AI");
+      U.$("#topTitle").textContent = t(TITLES[view] || "StitchMeasure");
       const el = U.$("#view");
       el.innerHTML = "";
       try { await SM.views[view](el, app.route.args); }
@@ -96,7 +96,7 @@
       else if (s.sw === "unsupported") { cls = "off"; text = t("No offline cache"); }
       else text = t("Preparing offline");
       if (pill) { pill.className = "status-pill " + cls; pill.innerHTML = `<span class="dot"></span><span>${text}</span>`; }
-      if (side) side.innerHTML = `<span class="status-pill ${cls}"><span class="dot"></span><span>${text}</span></span><div style="margin-top:8px">${t("Data stays on this device.")}</div>`;
+      if (side) side.innerHTML = `<span class="status-pill ${cls}"><span class="dot"></span><span>${text}</span></span><div style="margin-top:8px">${t("Data stays on this device.")}</div><div style="margin-top:10px">${t("A Vrisama product")} · Bengaluru, India<br><a href="https://ads.vrisama.in" target="_blank" rel="noopener" style="color:#58F0C5">vrisama.in</a></div>`;
     },
 
     /* pick a customer (sheet). Resolves to customer or null */

@@ -1,6 +1,6 @@
 # stitchmeasure.vrisama.in
 
-StitchMeasure AI: an offline body measurement app (PWA) for tailors and fashion designers.
+StitchMeasure by Vrisama: an offline body measurement app (PWA) for tailors and fashion designers.
 
 This repository holds the built site served by GitHub Pages at https://stitchmeasure.vrisama.in.
 Source, docs and tests live in the StitchMeasure AI project (`npm run build` produces this folder).

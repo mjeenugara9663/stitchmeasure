@@ -31,7 +31,7 @@
     for (const p of photosRaw) photos.push(await photoOut(p, true));
     const data = {
       schema: only ? "stitchmeasure.profile/1" : "stitchmeasure.backup/1",
-      app: "StitchMeasure AI", appVersion: VERSION, createdAt: new Date().toISOString(),
+      app: "StitchMeasure by Vrisama", appVersion: VERSION, createdAt: new Date().toISOString(),
       customers, sessions, photos
     };
     if (!only) {

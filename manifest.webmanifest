@@ -1,14 +1,14 @@
 {
-  "name": "StitchMeasure AI",
+  "name": "StitchMeasure by Vrisama",
   "short_name": "StitchMeasure",
-  "description": "Offline body measurement studio for tailors and fashion designers.",
+  "description": "Vrisama's offline body measurement studio for tailors and fashion designers.",
   "id": "./",
   "start_url": "./index.html#/",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#0E1B2C",
-  "theme_color": "#0E1B2C",
+  "background_color": "#0B1028",
+  "theme_color": "#0B1028",
   "lang": "en",
   "categories": ["productivity", "business", "lifestyle"],
   "icons": [

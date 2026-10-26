@@ -9,7 +9,7 @@
     return new Promise((resolve) => {
       const d = document.createElement("div");
       d.className = "lock";
-      d.innerHTML = `<form><img src="public/icons/icon-192.png" alt="" width="72" height="72"><h1 style="color:#fff">StitchMeasure AI</h1><p style="color:#C4CDDB">${t("Enter your PIN")}</p>
+      d.innerHTML = `<form><img src="public/icons/icon-192.png" alt="" width="72" height="72"><h1 style="color:#fff">StitchMeasure</h1><p style="color:#58F0C5;font-weight:700;letter-spacing:.24em;font-size:11px">BY VRISAMA</p><p style="color:#B9C0E1">${t("Enter your PIN")}</p>
         <input type="password" inputmode="numeric" autocomplete="off" maxlength="8" aria-label="PIN" required><button class="btn primary block">${t("Unlock")}</button><p data-err style="color:#EE7B72" hidden>${t("Wrong PIN.")}</p></form>`;
       document.body.appendChild(d);
       const inp = d.querySelector("input"); setTimeout(() => inp.focus(), 50);
@@ -23,7 +23,7 @@
 
   function privacyFirstRun() {
     return new Promise((resolve) => {
-      const s = U.sheet({ title: t("Welcome to StitchMeasure AI"), html: `
+      const s = U.sheet({ title: t("Welcome to StitchMeasure by Vrisama"), html: `
         <p class="lead">${t("A measurement studio that works offline. Before you start:")}</p>
         <ul class="stack-sm" style="margin:0;padding-left:18px">${SM.PRIVACY.map((p) => `<li>${t(p)}</li>`).join("")}</ul>
         <div class="notice warn">${SM.icon("warn")}<div>${t("A phone camera cannot guarantee exact measurements. Values from photos are approximate and fit-critical measurements must be checked with a measuring tape.")}</div></div>
@@ -57,6 +57,6 @@
   }
   boot().catch((e) => {
     console.error(e);
-    document.getElementById("view").innerHTML = `<div class="notice danger">${SM.icon("warn")}<div><b>StitchMeasure could not start.</b><br>${U.esc(e.message)}</div></div>`;
+    document.getElementById("view").innerHTML = `<div class="notice danger">${SM.icon("warn")}<div><b>StitchMeasure by Vrisama could not start.</b><br>${U.esc(e.message)}</div></div>`;
   });
 })();

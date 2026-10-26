@@ -50,7 +50,7 @@
       ${histIds.map((id) => { const row = r.rows.find((x) => x.id === id); return `<tr><td>${esc(row.name)}</td><td class="num">${row.display}</td>${r.history.map((h) => `<td class="num">${SM.engine.format(h.items[id] && h.items[id].value, r.unit, id)}</td>`).join("")}</tr>`; }).join("")}</tbody></table></div>` : "";
     return `<article class="report">
       <header class="rep-head">
-        <div><div class="rep-brand">StitchMeasure AI</div><h1>Measurement sheet</h1></div>
+        <div><div class="rep-brand">Vrisama / StitchMeasure</div><h1>Measurement sheet</h1></div>
         <dl class="rep-meta">
           <div><dt>Customer</dt><dd>${esc(c.name || "–")}</dd></div><div><dt>ID</dt><dd>${esc(c.code || "–")}</dd></div>
           <div><dt>Date</dt><dd>${esc(SM.util.fmtDate(r.session.date))}</dd></div><div><dt>Designer</dt><dd>${esc(r.designer || "–")}</dd></div>
@@ -75,7 +75,7 @@
       ${r.session.remarks ? `<h3>Tailor remarks</h3><p>${esc(r.session.remarks)}</p>` : ""}
       ${photoURLs && photoURLs.length ? `<h3>Reference photographs</h3><div class="rep-photos">${photoURLs.map((p) => `<figure><img src="${p.url}" alt=""><figcaption>${esc(p.caption)}</figcaption></figure>`).join("")}</div>` : ""}
       ${histTable}
-      <footer class="rep-foot">Generated ${esc(SM.util.fmtDateTime(r.generatedAt))} · Measurements from photographs are approximate unless verified with a tape.</footer>
+      <footer class="rep-foot">Generated ${esc(SM.util.fmtDateTime(r.generatedAt))} · Measurements from photographs are approximate unless verified with a tape. StitchMeasure by Vrisama · stitchmeasure.vrisama.in</footer>
     </article>`;
   }
 
@@ -106,18 +106,18 @@
     const W = 210, M = 14; let y = 16;
     const c = r.customer || {};
     const ascii = (s) => String(s == null ? "" : s).replace(/[–—·]/g, "-").replace(/[“”]/g, '"').replace(/[‘’]/g, "'").replace(/°/g, " deg").replace(/[^\x20-\x7E]/g, "?");
-    doc.setFillColor(14, 27, 44); doc.rect(0, 0, W, 30, "F");
-    doc.setTextColor(216, 183, 106); doc.setFont("helvetica", "bold"); doc.setFontSize(9); doc.text("STITCHMEASURE AI", M, 11);
+    doc.setFillColor(11, 16, 40); doc.rect(0, 0, W, 30, "F");
+    doc.setTextColor(88, 240, 197); doc.setFont("helvetica", "bold"); doc.setFontSize(9); doc.text("VRISAMA  /  STITCHMEASURE", M, 11);
     doc.setTextColor(255, 255, 255); doc.setFontSize(18); doc.text("Measurement sheet", M, 21);
-    y = 38; doc.setTextColor(14, 27, 44); doc.setFontSize(9.5); doc.setFont("helvetica", "normal");
+    y = 38; doc.setTextColor(11, 16, 40); doc.setFontSize(9.5); doc.setFont("helvetica", "normal");
     const meta = [["Customer", c.name], ["ID", c.code], ["Date", r.session.date], ["Designer", r.designer || "-"], ["Garment", r.template ? r.template.name : "-"], ["Units", SM.engine.unitLabel(r.unit)], ["Height", c.heightCm ? SM.engine.format(c.heightCm, r.unit) + " " + SM.engine.unitLabel(r.unit) : "-"], ["Seam allowance", r.session.seamAllowanceCm != null ? SM.engine.format(r.session.seamAllowanceCm, r.unit) + " (not added)" : "Not set"]];
     meta.forEach((m, i) => { const col = i % 2, row = Math.floor(i / 2); doc.setFont("helvetica", "bold"); doc.text(ascii(m[0]) + ":", M + col * 92, y + row * 6); doc.setFont("helvetica", "normal"); doc.text(ascii(m[1] || "-"), M + 28 + col * 92, y + row * 6); });
     y += Math.ceil(meta.length / 2) * 6 + 3;
-    doc.setFontSize(9); doc.setTextColor(31, 138, 132); doc.text(ascii(summaryLine(r)), M, y); y += 6;
+    doc.setFontSize(9); doc.setTextColor(106, 69, 218); doc.text(ascii(summaryLine(r)), M, y); y += 6;
     const cols = [["Measurement", 56], ["Body", 18], ["Source", 40], ["Status", 34], ["Ease", 12], ["Design", 12], ["Finished", 10]];
     const header = () => {
-      doc.setFillColor(238, 241, 240); doc.rect(M, y - 4, W - 2 * M, 6.5, "F");
-      doc.setFont("helvetica", "bold"); doc.setFontSize(8); doc.setTextColor(14, 27, 44);
+      doc.setFillColor(236, 234, 248); doc.rect(M, y - 4, W - 2 * M, 6.5, "F");
+      doc.setFont("helvetica", "bold"); doc.setFontSize(8); doc.setTextColor(11, 16, 40);
       let x = M + 1.5; cols.forEach(([t, w]) => { doc.text(t, x, y); x += w; }); y += 6;
     };
     header();
@@ -126,13 +126,13 @@
       if (y > 280) { doc.addPage(); y = 18; header(); doc.setFont("helvetica", "normal"); doc.setFontSize(8.5); }
       if (x.needsTape) { doc.setFillColor(253, 243, 224); doc.rect(M, y - 4, W - 2 * M, 6, "F"); }
       const vals = [x.name, x.value != null ? x.display + " " + x.unit : "-", x.source, x.status + (x.needsTape ? " *" : ""), x.ease != null ? SM.engine.format(x.ease, r.unit, x.id) : "", x.design != null ? SM.engine.format(x.design, r.unit, x.id) : "", x.finished != null ? SM.engine.format(x.finished, r.unit, x.id) : ""];
-      let cx = M + 1.5; doc.setTextColor(14, 27, 44);
+      let cx = M + 1.5; doc.setTextColor(11, 16, 40);
       vals.forEach((v, i) => { const t = doc.splitTextToSize(ascii(v), cols[i][1] - 2)[0] || ""; doc.text(t, cx, y); cx += cols[i][1]; });
       doc.setDrawColor(225, 228, 226); doc.line(M, y + 2, W - M, y + 2); y += 6;
     });
     y += 3; doc.setFontSize(7.5); doc.setTextColor(90, 100, 110);
     doc.splitTextToSize("* Tape check needed: value from a camera or an estimate; confirm with a measuring tape before cutting. Finished = body + ease + design allowance. Seam allowance is not included.", W - 2 * M).forEach((l) => { doc.text(l, M, y); y += 4; });
-    if (r.session.remarks) { y += 2; doc.setFont("helvetica", "bold"); doc.setFontSize(9); doc.setTextColor(14, 27, 44); doc.text("Tailor remarks", M, y); y += 5; doc.setFont("helvetica", "normal"); doc.splitTextToSize(ascii(r.session.remarks), W - 2 * M).forEach((l) => { if (y > 285) { doc.addPage(); y = 18; } doc.text(l, M, y); y += 4.5; }); }
+    if (r.session.remarks) { y += 2; doc.setFont("helvetica", "bold"); doc.setFontSize(9); doc.setTextColor(11, 16, 40); doc.text("Tailor remarks", M, y); y += 5; doc.setFont("helvetica", "normal"); doc.splitTextToSize(ascii(r.session.remarks), W - 2 * M).forEach((l) => { if (y > 285) { doc.addPage(); y = 18; } doc.text(l, M, y); y += 4.5; }); }
     if (photoImgs && photoImgs.length) {
       doc.addPage(); y = 18; doc.setFont("helvetica", "bold"); doc.setFontSize(11); doc.text("Reference photographs", M, y); y += 6;
       let x = M; const cw = (W - 2 * M - 6) / 2;

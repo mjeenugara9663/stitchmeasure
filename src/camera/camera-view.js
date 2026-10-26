@@ -58,7 +58,7 @@
         <div class="cam-actions">
           <div class="l"><button class="icon-btn" data-import aria-label="${t("Import from gallery")}">${SM.icon("image")}</button><button class="icon-btn" data-timer aria-label="${t("Countdown timer")}">${SM.icon("timer")}</button></div>
           <button class="shutter" data-shutter aria-label="${t("Capture photo")}"><span></span></button>
-          <div class="r"><button class="btn sm" data-done style="background:#fff;color:#0E1B2C;border-color:#fff" hidden></button></div>
+          <div class="r"><button class="btn sm" data-done style="background:#fff;color:#0B1028;border-color:#fff" hidden></button></div>
         </div>
       </div>
       <input type="file" accept="image/*" data-file hidden>`;
@@ -140,8 +140,8 @@
         ${z ? `<label>${t("Zoom")} <span>${(+z.value).toFixed(1)}×</span><input type="range" min="${z.min}" max="${z.max}" step="${z.step}" value="${z.value}" data-k="zoom"></label>` : ""}
         <label class="check"><input type="checkbox" data-k="mirror" ${st.mirror ? "checked" : ""}><span>${t("Mirror front-camera preview")}</span></label>
         ${"DeviceOrientationEvent" in window ? `<label class="check"><input type="checkbox" data-k="tiltOn" ${st.tiltOn ? "checked" : ""}><span>${t("Tilt warnings (uses motion sensor)")}</span></label>` : ""}
-        <p style="color:#AFBACB;font-size:12.5px">${t("Grid squares are positioning guides only. They are not centimetres: a photo has no scale until it is calibrated.")}</p>
-        <p style="color:#AFBACB;font-size:12.5px">${t("Starting point for full body: about 2–3 m away, lens at waist height. Adjust until the head and feet sit between the gold lines; the right distance depends on the person's height, the lens and the room.")}</p>`;
+        <p style="color:#B9C0E1;font-size:12.5px">${t("Grid squares are positioning guides only. They are not centimetres: a photo has no scale until it is calibrated.")}</p>
+        <p style="color:#B9C0E1;font-size:12.5px">${t("Starting point for full body: about 2–3 m away, lens at waist height. Adjust until the head and feet sit between the gold lines; the right distance depends on the person's height, the lens and the room.")}</p>`;
     }
     $("[data-ppanel]").addEventListener("input", async (e) => {
       const k = e.target.dataset.k; if (!k) return;
@@ -212,7 +212,7 @@
         stage.style.width = "0px";
         message(`${SM.icon("camera", "")}<p style="font-weight:600;font-size:17px">${U.esc(e.message)}</p>
           <div class="btn-row" style="justify-content:center"><button class="btn" data-msgimport>${SM.icon("image")}${t("Import photo")}</button>${SM.camera.support().ok ? `<button class="btn ghost" data-retry>${t("Try again")}</button>` : ""}</div>
-          <p style="color:#AFBACB;font-size:13.5px">${t("You can always enter measurements manually with a tape.")}</p>`);
+          <p style="color:#B9C0E1;font-size:13.5px">${t("You can always enter measurements manually with a tape.")}</p>`);
         const mi = root.querySelector("[data-msgimport]"); if (mi) mi.onclick = () => $("[data-file]").click();
         const rt = root.querySelector("[data-retry]"); if (rt) rt.onclick = () => startCam();
       }
@@ -223,7 +223,7 @@
       if (S.cameraConsent || !SM.camera.support().ok) return true;
       return new Promise((resolve) => {
         message(`${SM.icon("shield")}<p style="font-weight:600;font-size:18px">${t("Camera access")}</p>
-          <p style="color:#C4CDDB">${t("StitchMeasure uses the camera only while this screen is open. Photos are processed on this device and are stored only if you save them to a customer. Nothing is uploaded.")}</p>
+          <p style="color:#B9C0E1">${t("StitchMeasure uses the camera only while this screen is open. Photos are processed on this device and are stored only if you save them to a customer. Nothing is uploaded.")}</p>
           <div class="btn-row" style="justify-content:center"><button class="btn" data-allow>${t("Continue")}</button><button class="btn ghost" data-msgimport>${t("Import a photo instead")}</button></div>`);
         root.querySelector("[data-allow]").onclick = () => { message(""); resolve(true); };
         root.querySelector("[data-msgimport]").onclick = () => { message(""); resolve(false); $("[data-file]").click(); };
